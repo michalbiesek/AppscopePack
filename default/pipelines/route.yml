@@ -1,0 +1,15 @@
+id: default
+groups: {}
+comments: []
+routes:
+  - id: default
+    name: default
+    final: true
+    disabled: false
+    pipeline: HTTP_Headers
+    description: Extract HTTP headers
+    clones: []
+    enableOutputExpression: false
+    outputExpression: null
+    filter: "true"
+    output: default

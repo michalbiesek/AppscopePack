@@ -1,0 +1,8 @@
+{
+  "$id": "https://example.com/http_method.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "http_method",
+  "type": "string",
+  "description": "HTTP method",
+  "enum": ["GET", "POST"]
+}

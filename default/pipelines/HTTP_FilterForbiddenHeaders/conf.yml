@@ -1,0 +1,18 @@
+output: default
+streamtags: []
+groups: {}
+asyncFuncTimeout: 1000
+functions:
+  - id: drop
+    filter: source!='http.req'
+    disabled: null
+    conf: {}
+    description: Drop everything besides HTTP requests
+  - id: eval
+    filter: "true"
+    disabled: null
+    conf:
+      add:
+        - name: is_valid
+          value: C.Schema('http_forbidden_headers_schema').validate(data)
+description: Filter unwanted

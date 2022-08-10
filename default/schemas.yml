@@ -1,0 +1,4 @@
+http_method_schema:
+  description: "List of allowed HTTP methods"
+http_forbidden_headers_schema:
+  description: "List of forbidden HTTP headers"
