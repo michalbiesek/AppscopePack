@@ -3,6 +3,15 @@ streamtags: []
 groups: {}
 asyncFuncTimeout: 1000
 functions:
+  - id: comment
+    filter: "true"
+    disabled: null
+    conf:
+      comment: |-
+        Example HTTP Pipeline
+        - drop everything besides HTTP response and requests
+        - validate HTTP method
+        - validate HTTP headers
   - id: drop
     filter: source!='http.req' && source!='http.resp'
     disabled: null
@@ -15,10 +24,11 @@ functions:
       keep:
         - _time
         - data*
+        - source
       remove:
         - "*"
       add: []
-    description: Save _time and data
+    description: Save _time and data and source
   - id: eval
     filter: "true"
     disabled: false
@@ -29,3 +39,19 @@ functions:
       remove:
         - data*
     description: Promote data structure
+  - id: eval
+    filter: source!='http.req'
+    disabled: null
+    conf:
+      add:
+        - name: is_valid
+          value: C.Schema('http_method_schema').validate(http_method)
+    description: Validate HTTP Method
+  - id: eval
+    filter: source!='http.req'
+    disabled: null
+    conf:
+      add:
+        - value: C.Schema('http_forbidden_headers_schema').validate(data)
+          name: is_valid_header
+    description: Validate HTTP Header
