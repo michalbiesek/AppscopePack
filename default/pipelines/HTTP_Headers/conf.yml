@@ -18,6 +18,14 @@ functions:
     conf: {}
     description: Drop everything besides HTTP response/request
   - id: eval
+    filter: source=='http.req'
+    disabled: null
+    conf:
+      add:
+        - value: C.Schema('http_forbidden_headers_schema').validate(data)
+          name: is_valid_header
+    description: Validate HTTP Header
+  - id: eval
     filter: "true"
     disabled: false
     conf:
@@ -25,6 +33,7 @@ functions:
         - _time
         - data*
         - source
+        - is_valid_header
       remove:
         - "*"
       add: []
@@ -52,6 +61,6 @@ functions:
     disabled: null
     conf:
       add:
-        - value: C.Schema('http_forbidden_headers_schema').validate(data)
-          name: is_valid_header
-    description: Validate HTTP Header
+        - name: is_valid_target
+          value: '!http_target.includes("..%2F")'
+    description: Validate HTTP Target
