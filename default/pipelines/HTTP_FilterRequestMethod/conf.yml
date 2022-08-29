@@ -26,5 +26,5 @@ functions:
     conf:
       add:
         - value: C.Schema('http_method_schema').validate(http_method)
-          name: is_valid
+          name: is_valid_method
 description: Filter HTTP request method

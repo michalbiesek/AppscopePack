@@ -44,7 +44,7 @@ functions:
     disabled: null
     conf:
       add:
-        - name: is_valid
+        - name: is_valid_method
           value: C.Schema('http_method_schema').validate(http_method)
     description: Validate HTTP Method
   - id: eval

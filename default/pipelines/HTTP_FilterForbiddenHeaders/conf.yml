@@ -13,6 +13,6 @@ functions:
     disabled: null
     conf:
       add:
-        - name: is_valid
+        - name: is_valid_header
           value: C.Schema('http_forbidden_headers_schema').validate(data)
 description: Filter unwanted
