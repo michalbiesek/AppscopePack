@@ -40,7 +40,7 @@ functions:
         - data*
     description: Promote data structure
   - id: eval
-    filter: source!='http.req'
+    filter: source=='http.req'
     disabled: null
     conf:
       add:
@@ -48,7 +48,7 @@ functions:
           value: C.Schema('http_method_schema').validate(http_method)
     description: Validate HTTP Method
   - id: eval
-    filter: source!='http.req'
+    filter: source=='http.req'
     disabled: null
     conf:
       add:
