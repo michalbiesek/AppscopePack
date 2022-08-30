@@ -3,6 +3,7 @@
    "allOf": [
       { "not": { "required": ["X-HTTP-Method"] } },
       { "not": { "required": ["X-HTTP-Method-Override"] } },
-      { "not": { "required": ["X-Method-Override"] } }
+      { "not": { "required": ["X-Method-Override"] } },
+      { "not": { "required": ["X-Rewrite-URL"] } }
    ]
 }
